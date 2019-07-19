@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+    
+    <display_name>Remote Authentication Server</display_name>
+    <icon>fa-server</icon>
+    <description><![CDATA[
+        API endpoints and functions to set a website a Single Sign On provider.
+    ]]></description>
+    
+    <login_to_origin><![CDATA[
+        <a href="{$url}"><i class="fa fa-sign-in"></i> Click here to go return to {$origin}</a>
+    ]]></login_to_origin>
+    
+    <messages>
+        <missing_wsh>Invalid parameters: no Website Handle has been provided.</missing_wsh>
+        <no_allowed_clients_found>rAuth configuration error: no allowed clients have been defined for the rAuth server.</no_allowed_clients_found>
+        <invalid_allowed_clients_format>rAuth configuration error: the allowed clients list for the rAuth server is invalid.</invalid_allowed_clients_format>
+        <website_disabled>Sorry, but %s is disabled for remote authentication on %s.</website_disabled>
+        <missing_details>rAuth configuration error: the website '%s' is not properly configured.</missing_details>
+        <wsh_not_found>The website '%s' is not allowed to make rAuth calls on this server.</wsh_not_found>
+        <invalid_ip>IP address '%s' from %s is invalid.</invalid_ip>
+        <ip_not_allowed>IP address '%s' is not allowed for authentication from %s.</ip_not_allowed>
+        <invalid_host>Cannot obtain the hostname from '%s'.</invalid_host>
+        <host_not_allowed>Host '%s' is not allowed for authentication from %s.</host_not_allowed>
+        <missing_signature_header>Signature missing on the request headers.</missing_signature_header>
+        <mising_data>No account data provided from %s.</mising_data>
+        <invalid_data>Invalid account data provided from %s.</invalid_data>
+        <new_account_mail_sent>The account already exists but it hasn't been confirmed. An email was sent to '{$email}'. Please check your inbox and follow instructions.</new_account_mail_sent>
+        <new_account_exists>The account already exists.</new_account_exists>
+        <new_account_disabled>The account already exists but is disabled.</new_account_disabled>
+        <registration_disabled>Sorry, but accounts registration is currently disabled.</registration_disabled>
+        <client_api_error>Client HTTP error attempting to fetch %s: %s</client_api_error>
+        <client_api_empty>Client request error while fetching %s: nothing returned.</client_api_empty>
+        <client_api_error2>Client request error received: %s</client_api_error2>
+        <cannot_confirm_account>Cannot confirm account #%s for %s on %s: %s.</cannot_confirm_account>
+        <missing_account_id>Missing account id from %s</missing_account_id>
+        <invalid_account_id>Invalid account id received from %s</invalid_account_id>
+        <account_not_found>Account not found.</account_not_found>
+        <validating_missing_params>Missing params for login validation.</validating_missing_params>
+        <validating_account_not_found>Account not found on authentication server.</validating_account_not_found>
+        <validating_engine_disabled>Sorry, but login validation is disabled.</validating_engine_disabled>
+        <validating_account_disabled>Account validation error: account disabled.</validating_account_disabled>
+        <validating_wrong_passowd>Account validation error: password mismatch.</validating_wrong_passowd>
+        <transferring_missing_params>Missing params for account transfer.</transferring_missing_params>
+        <transferring_account_not_found>Account not found on the source server.</transferring_account_not_found>
+        <transferring_engine_disabled>Sorry, but account transfers are disabled.</transferring_engine_disabled>
+        <transferring_account_disabled>Account transfer error: account disabled.</transferring_account_disabled>
+        <transferring_wrong_passowd>Account transfer error: password mismatch.</transferring_wrong_passowd>
+        <level_changed_ko>Couldn't change the account level on {$client}: {$error}</level_changed_ko>
+        <level_changed_ok>Account level successfully changed on {$client}</level_changed_ok>
+    </messages>
+    
+    <settings_data>
+        <title>Remote Auth Server</title>
+        
+        <specs key="allowed_clients">
+            <title><![CDATA[
+                Allowed clients list
+            ]]></title>
+            <description><![CDATA[
+                Specify the details of each website that is an authentication client for this server using INI syntax
+                as shown below:
+                <pre>[website_handle]
+title = Website title
+url = http://www.domain.com
+user_id_prefix = number
+encryption_key1 = some random characters
+encryption_key2 = some random characters
+encryption_key3 = some random characters
+valid_hostnames = local-hostname hostname.com www.hostname.com etc.hostname.com
+valid_ips = 1.2.3.4 1.2.3.5
+enabled = true
+
+[website_handle]
+...</pre>
+            Notes:
+            <ul>
+                <li>The <code>website_handle</code> key should be a lowercased alphanumeric string, unique for each website.</li>
+                <li>The <code>url</code> must be the website's document root.</li>
+                <li>The <code>title</code>, <code>encryption_keyX</code> and <code>valid_hostnames</code> keys are mandatory.</li>
+                <li>
+                    The <code>user_id_prefix</code>, if specified, should be a unique two-digit number
+                    <b>equal or greater than <code>20</code></b> that will be prepended to account ids.
+                </li>
+                <li>The encryption keys must be the same set on the client side.</li>
+                <li>The <code>valid_ips</code> is optional.</li>
+                <li>The <code>valid_hostnames</code> and <code>valid_ips</code> values, if defined, must be space-separated lists.</li>
+                <li>To disable a website, prepend a semicolon (<code>;</code>) to each of its lines.</li>
+                <li>Once used, you shouldn't change <code>website_handle</code>.</li>
+            </ul>
+            ]]></description>
+            <type>code</type>
+        </specs>
+        
+    </settings_data>
+    
+</language>

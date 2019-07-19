@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    
+    <version>1.0.0</version>
+    <group>modules_premium</group>
+    <admin_only>false</admin_only>
+    
+    <working_flags>
+        <install>true</install>
+        <uninstall>true</uninstall>
+        <enable>true</enable>
+        <disable>true</disable>
+    </working_flags>
+    
+    <php_includes>
+        <document_handler>extenders/document_handler.inc</document_handler>
+    </php_includes>
+    
+    <extends_to>
+        <accounts>
+            <registration>
+                <before_state_check>extenders/broadcast_account_confirmation.inc</before_state_check>
+            </registration>
+            <confirm_account_page>
+                <after_successful_confirmation>extenders/account_confirmation_redir.inc</after_successful_confirmation>
+            </confirm_account_page>
+            <toolbox>
+                <account_level_changed>extenders/account_level_change.inc</account_level_changed>
+            </toolbox>
+        </accounts>
+    </extends_to>
+    
+</module>
