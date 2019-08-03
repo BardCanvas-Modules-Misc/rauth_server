@@ -48,6 +48,12 @@
         <transferring_wrong_passowd>Account transfer error: password mismatch.</transferring_wrong_passowd>
         <level_changed_ko>Couldn't change the account level on {$client}: {$error}</level_changed_ko>
         <level_changed_ok>Account level successfully changed on {$client}</level_changed_ok>
+        <invalid_prefs>Invalid preferences data received from %s.</invalid_prefs>
+        <received_prefs><![CDATA[
+            <b>Important:</b> account preferences have been received from {$server}.
+            If you're editing your profile or setting your account preferences, please
+            stop now and reload the page before submitting any changes.
+        ]]></received_prefs>
     </messages>
     
     <settings_data>

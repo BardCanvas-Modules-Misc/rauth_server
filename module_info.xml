@@ -27,6 +27,15 @@
             <toolbox>
                 <account_level_changed>extenders/account_level_change.inc</account_level_changed>
             </toolbox>
+            <prefs_editor>
+                <after_saving>extenders/save_current_prefs.inc</after_saving>
+            </prefs_editor>
+            <profile_editor>
+                <after_saving>extenders/save_prefs.inc</after_saving>
+            </profile_editor>
+            <account_admin_editor>
+                <after_saving>extenders/save_prefs.inc</after_saving>
+            </account_admin_editor>
         </accounts>
     </extends_to>
     

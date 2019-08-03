@@ -73,6 +73,13 @@ class client
         );
     }
     
+    public function save_engine_prefs($id_account, $prefs)
+    {
+        return $this->post_data(
+            "save_engine_prefs.php", array("id_account" => $id_account, "prefs" => $prefs)
+        );
+    }
+    
     /**
      * @param string $script
      * @param mixed  $params
@@ -102,6 +109,60 @@ class client
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($ch, CURLOPT_FRESH_CONNECT,  TRUE);
+        
+        usleep(100000);
+        $res = curl_exec($ch);
+        # echo "res := $res<br>";
+        
+        if( curl_error($ch) )
+            throw new \Exception(sprintf(
+                $current_module->language->messages->client_api_error, $url, curl_error($ch)
+            ));
+        
+        curl_close($ch);
+        
+        if( empty($res) )
+            throw new \Exception(sprintf(
+                $current_module->language->messages->client_api_empty, $url
+            ));
+        
+        if( $res != "OK" )
+            throw new \Exception(sprintf(
+                $current_module->language->messages->client_api_error2, $res
+            ));
+        
+        return $res;
+    }
+    
+    /**
+     * @param string $script
+     * @param mixed  $params
+     * 
+     * @return string
+     * @throws \Exception
+     */
+    private function post_data($script, $params)
+    {
+        global $modules;
+        
+        $current_module = $modules["rauth_server"];
+        
+        $url = "{$this->url}/rauth_client/scripts/{$script}";
+        
+        foreach( $params as $key => $val )
+            $params[$key] = three_layer_encrypt(
+                serialize($val), $this->encryption_key1, $this->encryption_key2, $this->encryption_key3
+            );
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,            $url );
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_FRESH_CONNECT,  TRUE);
+        curl_setopt($ch, CURLOPT_POST,           1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     http_build_query($params));
         
         usleep(100000);
         $res = curl_exec($ch);
