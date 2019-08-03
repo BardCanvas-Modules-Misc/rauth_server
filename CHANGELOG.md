@@ -1,6 +1,14 @@
 
 # Remote Authentication Server Change Log
 
+## [1.2.0] - 2019-08-03
+
+- Fixed wrong module group.
+
+## [1.2.0] - 2019-08-03
+
+- Fixed wrong module group.
+
 ## [1.1.0] - 2019-08-03
 
 - Removed pause after notifications.
