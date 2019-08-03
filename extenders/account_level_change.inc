@@ -40,12 +40,10 @@ foreach($ini as $wshandle => $wsdata)
             $this_module->language->messages->level_changed_ko,
             array( '{$client}' => $client->title, '{$error}' => $e->getMessage() )
         ));
-        sleep(1);
     }
     
     send_notification($account->id_account, "success", replace_escaped_objects(
         $this_module->language->messages->level_changed_ok,
         array( '{$client}' => $client->title )
     ));
-    sleep(1);
 }
