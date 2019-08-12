@@ -1,6 +1,10 @@
 
 # Remote Authentication Server Change Log
 
+## [1.2.1] - 2019-08-12
+
+- Added local account exceptions.
+
 ## [1.2.0] - 2019-08-03
 
 - Fixed wrong module group.
