@@ -98,6 +98,17 @@ enabled = true
             <type>code</type>
         </specs>
         
+        <specs key="local_accounts">
+            <title><![CDATA[
+                Local accounts
+            ]]></title>
+            <description><![CDATA[
+                The user names you specify on this list will be kept locally.<br>
+                Type one user name per line.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        
     </settings_data>
     
 </language>

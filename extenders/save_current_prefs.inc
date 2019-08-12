@@ -14,6 +14,20 @@ use hng2_modules\rauth_server\client;
 
 global $account, $settings;
 
+$locals = $settings->get("modules:rauth_server.local_accounts");
+if( ! empty($locals) )
+{
+    foreach(explode("\n", $locals) as $line)
+    {
+        $line = trim($line);
+        
+        if( empty($line) ) continue;
+        if( substr($line, 0, 1) == "#" ) continue;
+        
+        if( $line == $account->user_name ) return;
+    }
+}
+
 $now   = date("Y-m-d H:i:s");
 $ldate = date("Ymd");
 $log   = "{$config->logfiles_location}/rauth_server_prefs_pushing-$ldate.log";

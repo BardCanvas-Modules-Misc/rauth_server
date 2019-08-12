@@ -15,6 +15,20 @@ use hng2_modules\rauth_server\client;
 
 global $account, $user_account, $settings;
 
+$locals = $settings->get("modules:rauth_server.local_accounts");
+if( ! empty($locals) )
+{
+    foreach(explode("\n", $locals) as $line)
+    {
+        $line = trim($line);
+        
+        if( empty($line) ) continue;
+        if( substr($line, 0, 1) == "#" ) continue;
+        
+        if( $line == $user_account->user_name ) return;
+    }
+}
+
 $raw = $settings->get("modules:rauth_server.allowed_clients");
 if( empty($raw) ) return;
 
