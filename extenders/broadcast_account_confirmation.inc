@@ -14,6 +14,8 @@ use hng2_modules\rauth_server\client;
 
 global $xaccount, $errors;
 
+if( $xaccount->get_engine_pref("@rauth_server:no_before_state_check") == "true" ) return;
+
 $wsdata = $xaccount->get_engine_pref("@rauth_server:post_confirmation_wsdata");
 # echo "wsdata - " . nl2br(print_r($wsdata, true));
 

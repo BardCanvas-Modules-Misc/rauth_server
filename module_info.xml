@@ -18,8 +18,12 @@
     
     <extends_to>
         <accounts>
+            <register_form>
+                <top>extenders/registration_extras.inc</top>
+            </register_form>
             <registration>
                 <before_state_check>extenders/broadcast_account_confirmation.inc</before_state_check>
+                <after_sending_confirmation_email>extenders/pre_confirmation_settings.inc</after_sending_confirmation_email>
             </registration>
             <confirm_account_page>
                 <after_successful_confirmation>extenders/account_confirmation_redir.inc</after_successful_confirmation>
