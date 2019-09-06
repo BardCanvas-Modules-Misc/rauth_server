@@ -1,6 +1,10 @@
 
 # Remote Authentication Server Change Log
 
+## [1.3.0] - 2019-09-06
+
+- Added support for SSO-like logins (always remote) from clients.
+
 ## [1.2.1] - 2019-08-12
 
 - Added local account exceptions.
