@@ -56,6 +56,16 @@
         ]]></received_prefs>
     </messages>
     
+    <login_page>
+        <title>Login into {$client_name}</title>
+        <info><![CDATA[
+            Please enter your <span class="alternate">{$server_name}</span> credentials
+            to access <span class="greengo">{$client_name}</span>
+        ]]></info>
+        <belong>Would you like to belong to our club?</belong>
+        <register_now>Register now!</register_now>
+    </login_page>
+    
     <settings_data>
         <title>Remote Auth Server</title>
         
@@ -105,6 +115,25 @@ enabled = true
             <description><![CDATA[
                 The user names you specify on this list will be kept locally.<br>
                 Type one user name per line.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        
+        <specs is_separator="true">Login page for clients with "Always remote" login override</specs>
+        
+        <specs key="login_page_top_markup">
+            <title>Login page markup: TOP</title>
+            <description><![CDATA[
+                Use this editor to type in any styles or scripts you want to inject
+                at the top of the login page, below the heading.
+            ]]></description>
+            <type>code</type>
+        </specs>
+        
+        <specs key="login_page_left_markup">
+            <title>Login page markup: LEFT</title>
+            <description><![CDATA[
+                Type in any markup you want to show at the left side of the login form.
             ]]></description>
             <type>code</type>
         </specs>

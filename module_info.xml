@@ -36,6 +36,9 @@
             <account_admin_editor>
                 <after_saving>extenders/save_prefs.inc</after_saving>
             </account_admin_editor>
+            <login>
+                <before_successful_output>extenders/account_login_redir.inc</before_successful_output>
+            </login>
         </accounts>
     </extends_to>
     
