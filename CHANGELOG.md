@@ -1,6 +1,10 @@
 
 # Remote Authentication Server Change Log
 
+## [1.3.1] - 2019-09-06
+
+- Added support for registration from redirected "always remote" clients.
+
 ## [1.3.0] - 2019-09-06
 
 - Added support for SSO-like logins (always remote) from clients.
