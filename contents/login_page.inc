@@ -64,8 +64,32 @@ $accounts_module = $modules["accounts"];
                 </span>
             </div>
             
-            <div class="field submit_button_container alignright">
-                <button type="submit">
+            <?
+            $div_class = "alignright";
+            $btn_class = "";
+            if( $modules["single_signon"]->enabled )
+            {
+                $div_class = "clearfix";
+                $btn_class = "pull-right";
+            }
+            ?>
+            <style type="text/css">
+                .field.submit_button_container .sso_container                 { display: inline-block; line-height: calc(1.4em + 5px); }
+                .field.submit_button_container .sso_container > div           { display: inline; margin: 0 !important; }
+                .field.submit_button_container .sso_container .framed_content { margin: 0 !important }
+            </style>
+            <div class="field submit_button_container <?= $div_class ?>">
+                <?
+                if( $modules["single_signon"]->enabled )
+                {
+                    $this_module = $modules["single_signon"];
+                    echo "<div class='sso_container'>";
+                    $_GET["redir_url"] = "{$current_module->get_url()}/scripts/login_redirect.php?wsh={$wsdata["handle"]}";
+                    include "{$modules["single_signon"]->abspath}/extenders/login_form.inc";
+                    echo "</div>";
+                }
+                ?>
+                <button type="submit" class="<?= $btn_class ?>">
                     <span class="fa fa-sign-in"></span>
                     <?= $accounts_module->language->login ?>
                 </button>

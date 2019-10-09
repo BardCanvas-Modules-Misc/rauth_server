@@ -19,7 +19,7 @@
     <extends_to>
         <accounts>
             <register_form>
-                <top>extenders/registration_extras.inc</top>
+                <top priority="100">extenders/registration_extras.inc</top>
             </register_form>
             <registration>
                 <before_state_check>extenders/broadcast_account_confirmation.inc</before_state_check>
