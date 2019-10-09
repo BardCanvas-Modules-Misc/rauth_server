@@ -1,6 +1,10 @@
 
 # Remote Authentication Server Change Log
 
+## [1.3.2] - 2019-10-08
+
+- Added support for the Single Sign On module.
+
 ## [1.3.1] - 2019-09-06
 
 - Added support for registration from redirected "always remote" clients.
