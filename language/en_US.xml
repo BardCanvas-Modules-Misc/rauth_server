@@ -54,6 +54,9 @@
             If you're editing your profile or setting your account preferences, please
             stop now and reload the page before submitting any changes.
         ]]></received_prefs>
+        
+        <account_already_in_creation>Cannot map account: there's already an account with the same user name being created.</account_already_in_creation>
+        <account_exists_and_disabled>Sorry, but there's already an account with the same user name and it is disabled.</account_exists_and_disabled>
     </messages>
     
     <login_page>
