@@ -1,6 +1,10 @@
 
 # Remote Authentication Server Change Log
 
+## [1.3.3] - 2020-05-15
+
+- Added client account mapping methods.
+
 ## [1.3.2] - 2019-10-08
 
 - Added support for the Single Sign On module.
